@@ -3,6 +3,16 @@
     with_items:
       - git
       - git-core
+      - nginx
   - git: >
       accept_hostkey=yes
-      repo=
+      repo=https://github.com/yunlzheng/aws_ansible.git
+      dest=/srv/www/todo
+  - npm: path=/srv/www/todo
+
+  - shell: forever.sh start chdir=/srv/www/todo
+
+  - name: write nginx.conf
+    copy: src=nginx.conf dest=/etc/nginx/nginx.conf
+    notify:
+      - restart nginx

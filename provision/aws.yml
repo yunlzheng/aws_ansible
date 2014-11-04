@@ -45,11 +45,12 @@
 - name: Configuration play
   hosts: ec2hosts
   user: ubuntu
+  sudo: yes
   gather_facts: true
   roles:
     - common
     - database
-    - app
+    - deploy
 
 # - hosts: ec2hosts
 #   gather_facts: True
