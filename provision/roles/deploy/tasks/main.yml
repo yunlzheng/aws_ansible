@@ -10,9 +10,16 @@
       dest=/srv/www/todo
   - npm: path=/srv/www/todo
 
-  - shell: forever.sh start chdir=/srv/www/todo
+  - shell: ./forever.sh start chdir=/srv/www/todo/
 
   - name: write nginx.conf
-    copy: src=nginx.conf dest=/etc/nginx/nginx.conf
+    copy: src=nginx.conf dest=/etc/nginx/sites-available/todo
+    notify:
+      - restart nginx
+
+  - name: remove default nginx site
+    file: path=/etc/nginx/sites-enabled/default state=absent
+
+  - file: src=/etc/nginx/sites-available/todo dest=/etc/nginx/sites-enabled/todo state=link
     notify:
       - restart nginx
