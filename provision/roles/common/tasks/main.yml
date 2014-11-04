@@ -1,0 +1,13 @@
+---
+#- copy: src=sources.list dest=/etc/apt/sources.list backup=yes
+
+- apt_repository: repo=ppa:chris-lea/node.js
+
+- shell: apt-get update && touch apt.update.success
+  args:
+    creates: apt.update.success
+
+- apt: name={{ item }}
+  with_items:
+    - python-software-properties
+    - nodejs

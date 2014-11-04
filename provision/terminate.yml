@@ -1,0 +1,9 @@
+---
+# Clean Aws Resources
+  - name: With the newly provisioned EC2 node configure that thing
+    hosts: launched
+    sudo: yes
+    remote_user: ubuntu
+    gather_facts: True
+    tasks:
+      - shell: echo hello world!

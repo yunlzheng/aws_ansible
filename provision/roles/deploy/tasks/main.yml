@@ -1,0 +1,8 @@
+---
+  - apt: name={{ item }}
+    with_items:
+      - git
+      - git-core
+  - git: >
+      accept_hostkey=yes
+      repo=

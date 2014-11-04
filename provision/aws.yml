@@ -1,0 +1,66 @@
+- name: Provision an EC2 node
+  hosts: local
+  connection: local
+  gather_facts: False
+  tags: provisioning
+  vars_files:
+    - "environments/{{ stack_name }}.yml"
+  tasks:
+    - name: Launch new Instance
+      ec2: >
+        instance_tags="Name=AnsibleTest"
+        group={{ security_group }}
+        instance_type={{ instance_type}}
+        image={{ image }} wait=true
+        region={{ region }}
+        keypair={{ keypair }}
+      register: ec2
+
+    - debug: var=ec2
+    - debug: var=item
+      with_items: ec2.instance_ids
+
+    - add_host: hostname={{ item.public_ip }} groupname=ec2hosts
+      with_items: ec2.instances
+
+    - name: wait for instances to listen on port:22
+      wait_for: >
+              state=started
+              host={{ item.public_dns_name }}
+              port=22
+      with_items: ec2.instances
+
+# - hosts: ec2hosts
+#   gather_facts: True
+#   user: ubuntu
+#   sudo: True
+#   tasks:
+#     # fetch instance data from the metadata servers in ec2
+#     - ec2_facts:
+#     # show all known facts for this host
+#     - debug: var=hostvars[inventory_hostname]
+#     # just show the instance-id
+#     - debug: msg="{{ hostvars[inventory_hostname]['ansible_ec2_instance_id'] }}"
+
+- name: Configuration play
+  hosts: ec2hosts
+  user: ubuntu
+  gather_facts: true
+  roles:
+    - common
+    - database
+    - app
+
+# - hosts: ec2hosts
+#   gather_facts: True
+#   connection: local
+#   vars:
+#     region: us-east-1
+#   tasks:
+#     - name: destroy all instances
+#       ec2: >
+#            state='absent'
+#            instance_ids={{ item }}
+#            region={{ region }}
+#            wait=true
+#       with_items: hostvars[inventory_hostname]['ansible_ec2_instance_id']
