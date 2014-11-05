@@ -1,6 +1,6 @@
 # DevOps With Ansible
 
-## Local Development
+## Local Development With Vagrant/Docker 
 
 For local development we use vagrant as our dev env.
 
