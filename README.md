@@ -2,7 +2,7 @@
 
 This is a Devops example project, in this project we both have project code and also the ansible script.
 
-the demo project is clone from ![https://github.com/dreamerslab/express-todo-example.git](express-todo-example)
+the express demo project is clone from [https://github.com/dreamerslab/express-todo-example.git](https://github.com/dreamerslab/express-todo-example.git)
 
 After this you can imagine， we can automate everything with the same ansible script.
 
