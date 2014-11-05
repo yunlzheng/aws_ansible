@@ -1,6 +1,6 @@
 ---
  instance_type: t1.micro
  security_group: sg_web
- image: ami-a73264ce
+ image: ami-3298165a
  region: us-east-1
  keypair: ec2lab

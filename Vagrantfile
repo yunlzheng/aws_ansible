@@ -24,7 +24,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     }
 
     ansible.limit = 'all_groups'
-    ansible.playbook = "provision/site.yml"
+    ansible.playbook = "provision/vagrant.yml"
 
   end
 

@@ -8,7 +8,7 @@
   tasks:
     - name: Launch new Instance
       ec2: >
-        instance_tags="Name=AnsibleTest"
+        instance_tags="Name=ansible-{{stack_name}}"
         group={{ security_group }}
         instance_type={{ instance_type}}
         image={{ image }} wait=true
@@ -50,7 +50,8 @@
   roles:
     - common
     - database
-    - deploy
+    - app_remote
+    - nginx
 
 # - hosts: ec2hosts
 #   gather_facts: True

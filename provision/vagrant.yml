@@ -1,0 +1,6 @@
+- hosts: dev_groups
+  sudo: yes
+  roles:
+    - common
+    - database
+    - app_vagrant

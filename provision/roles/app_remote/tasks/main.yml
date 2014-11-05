@@ -1,0 +1,16 @@
+---
+  - file: path=/srv/www/ owner=ubuntu state=directory
+    sudo: yes
+
+  - name: checkout the code base
+    sudo: no
+    git: >
+      accept_hostkey=yes
+      repo=https://github.com/yunlzheng/aws_ansible.git
+      dest=/srv/www/todo
+
+  - name: install node packages
+    sudo: yes
+    npm: path=/srv/www/todo
+
+  - shell: ./forever.sh start chdir=/srv/www/todo/

@@ -20,7 +20,11 @@
     },
     {
       "type": "ansible-local",
-      "playbook_file": "./provision/ami.yml"
+      "playbook_file": "./provision/ami.yml",
+      "role_paths": [
+          "./provision/roles/common",
+          "./provision/roles/database"
+      ]
     }
   ]
 }
