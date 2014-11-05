@@ -14,7 +14,16 @@ vagrant up
 
 > Other Notes: If you like Docker rather than Vagrant. You can also provision the docker with ansible
 
+```
+FROM ansible/ubuntu12.04-ansible:stable
 
+ADD provision /srv/ansible/
+ADD . /vagrant
+WORKDIR /srv/ansible
+
+# Run Ansible to configure the Docker image
+RUN ansible-playbook docker.yml -c local
+```
 
 ## AWS Development
 
