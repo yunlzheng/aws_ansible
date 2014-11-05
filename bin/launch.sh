@@ -1,1 +1,1 @@
-ansible-playbook -i ../provision/local ../provision/aws.yml --extra-vars "stack_name=$@"
+ansible-playbook -i ../provision/hosts ../provision/aws.yml --extra-vars "stack_name=$@"
