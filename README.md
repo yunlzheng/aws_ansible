@@ -52,5 +52,7 @@ RUN ansible-playbook docker.yml -c local
 
 ```
 cd bin
-./launch.sh test
+./launch.sh test # Deploy the application in aws
+./terminate.sh test # Destory the instance in aws
 ```
+
