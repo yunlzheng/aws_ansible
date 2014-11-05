@@ -1,6 +1,7 @@
 ---
  instance_type: t1.micro
  security_group: sg_web
- image: ami-3298165a
+ # If you use packer you can replace the ami
+ image: ami-a73264ce
  region: us-east-1
  keypair: ec2lab
