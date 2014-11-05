@@ -1,0 +1,8 @@
+- name: Configuration play
+  hosts: all
+  sudo: yes
+  gather_facts: true
+  roles:
+    - common
+    - database
+    - deploy
