@@ -56,3 +56,19 @@ cd bin
 ./terminate.sh test # Destory the instance in aws
 ```
 
+## How to speed up
+
+As we kown, provision a machine need much time to install the softwares. The time is depend on the network. 
+
+In AWS, we can build a AMI with the necessary softwares. and later you can use your own ami to build aws instance.
+
+For example:
+
+Build AMI with packer, and packer will provision the AMI with ansible
+
+```
+packer build packer.json
+```
+
+the update your ./provision/enviroments/test.yml replace the image with our own API id.
+
