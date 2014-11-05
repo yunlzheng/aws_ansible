@@ -1,7 +1,0 @@
-[local]
-localhost
-
-[dev_groups]
-
-[targets]
-localhost              ansible_connection=local
