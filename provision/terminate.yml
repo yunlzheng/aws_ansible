@@ -1,9 +1,34 @@
 ---
+- hosts: launched
+  gather_facts: True
+  user: ubuntu
+  sudo: True
+  tasks:
+    # fetch instance data from the metadata servers in ec2
+    - ec2_facts:
+    # show all known facts for this host
+    - debug: var=hostvars[inventory_hostname]
+    # just show the instance-id
+    - debug: msg="{{ hostvars[inventory_hostname]['ansible_ec2_instance_id'] }}"
+
 # Clean Aws Resources
-  - name: With the newly provisioned EC2 node configure that thing
-    hosts: launched
-    sudo: yes
-    remote_user: ubuntu
-    gather_facts: True
-    tasks:
-      - shell: echo hello world!
+- hosts: launched
+  connection: local
+  gather_facts: True
+  vars_files:
+    - "environments/{{ stack_name }}.yml"
+  tasks:
+    - name: destroy all instances
+      with_items: hostvars[inventory_hostname]['ansible_ec2_instance_id']
+      ec2: >
+        state='absent'
+        instance_ids={{ item }}
+        region={{ region }}
+        wait=true
+
+    - name: clean local hosts store
+      local_action:
+        module: lineinfile
+        dest: hosts
+        regexp: "{{ inventory_hostname }}"
+        state: absent
