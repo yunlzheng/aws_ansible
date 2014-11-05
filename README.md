@@ -2,6 +2,20 @@
 
 ## Local Development
 
+For local development we use vagrant as our dev env.
+
+In order to setup a local dev env. i can just use the follow method:
+
+```
+vagrant up
+```
+
+> after this, vagrant will create a new virtual machine, and provision the vagrant with ansible
+
+> Other Notes: If you like Docker rather than Vagrant. You can also provision the docker with ansible
+
+
+
 ## AWS Development
 
 **in order use aws we need the follow environment variables:**
