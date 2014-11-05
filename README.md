@@ -1,6 +1,16 @@
 # DevOps With Ansible
 
-## Local Development With Vagrant/Docker 
+This is a Devops example project, in this project we both have project code and also the ansible script.
+
+After this you can imagine， we can automate everything with the same ansible script.
+
+* we can build vagrant as local development env with ansible
+* we can build docker image with ansible
+* we can build the aws instance with ansible
+* we can build aws ami use packer with ansible
+* we can automate deploy the application with ansible
+
+## Local Development With Vagrant/Docker
 
 For local development we use vagrant as our dev env.
 
