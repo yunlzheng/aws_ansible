@@ -2,10 +2,10 @@
   "builders": [
     {
       "type": "amazon-ebs",
-      "access_key": "...",
-      "secret_key": "...",
+      "access_key": "AKIAIVFC6JVPORNSTJYQ",
+      "secret_key": "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",
       "region": "us-east-1",
-      "source_ami": "ami-de0d9eb7",
+      "source_ami": "ami-a73264ce",
       "instance_type": "t1.micro",
       "ssh_username": "ubuntu",
       "ami_name": "packer {{timestamp}}"
@@ -14,8 +14,13 @@
 
   "provisioners": [
     {
+      "type": "shell",
+      "execute_command": "echo 'ec2' | {{.Vars}} sudo -S -E bash '{{.Path}}'",
+      "script": "scripts/ansible.sh"
+    },
+    {
       "type": "ansible-local",
-      "playbook_file": "provision/local.yml"
+      "playbook_file": "./provision/ami.yml"
     }
   ]
 }
