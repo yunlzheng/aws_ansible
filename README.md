@@ -2,6 +2,8 @@
 
 This is a Devops example project, in this project we both have project code and also the ansible script.
 
+the demo project is clone from ![https://github.com/dreamerslab/express-todo-example.git](express-todo-example)
+
 After this you can imagine， we can automate everything with the same ansible script.
 
 * we can build vagrant as local development env with ansible
@@ -9,6 +11,8 @@ After this you can imagine， we can automate everything with the same ansible s
 * we can build the aws instance with ansible
 * we can build aws ami use packer with ansible
 * we can automate deploy the application with ansible
+
+**Automate Everything**
 
 ## Local Development With Vagrant/Docker
 
