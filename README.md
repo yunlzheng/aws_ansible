@@ -56,6 +56,8 @@ cd bin
 ./terminate.sh test # Destory the instance in aws
 ```
 
+After the script success, you can vist your application with the aws instance public_dns url.
+
 ## How to speed up
 
 As we kown, provision a machine need much time to install the softwares. The time is depend on the network. 
