@@ -11,3 +11,5 @@
     - build-essential
     - python-software-properties
     - nodejs
+    - git
+    - git-core
