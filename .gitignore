@@ -7,3 +7,5 @@ sass
 config.rb
 
 .vagrant
+
+provision/hosts
